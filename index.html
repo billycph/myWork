@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Billy</title>
+</head>
+<body>
+    <h1>Welcome to my page!</h1>
+    <p> In here I am just document what I did and what I think. Thanks!</p>
+    <h2> Avoid Python .update() to overwrite existing dictionary value</h2>
+    <p>
+        def combine_dict(dict, messages):
+        """
+        combine two dictionaries value. This function avoid python string.update() overwriting other key value
+        if their first level key name are the same.
+        For example dict:{offense: {name1: "offense1", id1:"id1" }}, messages: {offense: {name2: "offense2", id2: "id2"}},
+        The object return by this method is {offense: {name1: "offense1", id1:"id1", name2: "offense2", id2: "id2" }}
+        :param dict: target dictionary
+        :param messages: those going to be merged
+        :return:
+        """
+        for item in messages:
+            label = dict.get(item)
+            if label:
+                # found same key name in first level
+                if 'NLS_ENCODING' not in item:
+                    # avoid string encoding
+                    dict.get(item).update(messages.get(item))
+            else:
+                dict[item] = messages.get(item)
+        return dict
+    </p>
+
+</body>
+</html>
